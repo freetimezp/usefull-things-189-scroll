@@ -1,4 +1,4 @@
-import { setupMarqueeAnimation } from "./marquee";
+import { setupMarqueeAnimation } from "./marquee.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     gsap.registerPlugin(ScrollTrigger, SplitText);
