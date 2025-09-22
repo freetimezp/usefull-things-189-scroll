@@ -154,8 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     cards.forEach((card, index) => {
-        if (index === 0) return;
-
         const cardDescription = card.querySelector(".card-description");
         const cardTitleChars = card.querySelectorAll(".char");
 
