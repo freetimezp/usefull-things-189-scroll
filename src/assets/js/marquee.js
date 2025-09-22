@@ -11,6 +11,7 @@ export function setupMarqueeAnimation() {
 
 function horizontalLoop(items, config) {
     items = gsap.utils.toArray(items);
+
     config = config || {};
 
     let tl = gsap.timeline({
@@ -22,7 +23,7 @@ function horizontalLoop(items, config) {
     let startX = items[0].offsetLeft;
     let widths = [];
     let xPercents = [];
-    let pixelsPerSecond = (config.speed || 1) * 100;
+    let pixelsPerSeonds = (config.speed || 1) * 100;
     let totalWidth, curX, distanceToStart, distanceToLoop, item, i;
 
     gsap.set(items, {
@@ -36,6 +37,7 @@ function horizontalLoop(items, config) {
     });
 
     gsap.set(items, { x: 0 });
+
     totalWidth =
         items[length - 1].offsetLeft +
         (xPercents[length - 1] / 100) * widths[length - 1] -
@@ -53,7 +55,7 @@ function horizontalLoop(items, config) {
             item,
             {
                 xPercent: ((curX - distanceToLoop) / widths[i]) * 100,
-                duration: distanceToLoop / pixelsPerSecond,
+                duration: distanceToLoop / pixelsPerSeonds,
             },
             0
         ).fromTo(
@@ -63,10 +65,10 @@ function horizontalLoop(items, config) {
             },
             {
                 xPercent: xPercents[i],
-                duration: (curX - distanceToLoop + totalWidth - curX) / pixelsPerSecond,
+                duration: (curX - distanceToLoop + totalWidth - curX) / pixelsPerSeonds,
                 immediateRender: false,
             },
-            distanceToLoop / pixelsPerSecond
+            distanceToLoop / pixelsPerSeonds
         );
     }
 

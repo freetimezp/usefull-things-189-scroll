@@ -14,13 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const titles = gsap.utils.toArray(".card-title h1");
     titles.forEach((title) => {
         const split = new SplitText(title, {
-            type: "char",
+            type: "chars",
             charsClass: "char",
-            tag: "div",
-        });
-
-        split.chars.forEach((char) => {
-            char.innerHTML = `<span>${char.textContent}</span>`;
         });
     });
 
@@ -33,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function animateContentIn(titleChars, description) {
         gsap.to(titleChars, {
             x: "0%",
+            opacity: 1,
             duration: 0.75,
             ease: "power4.out",
         });
@@ -49,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function animateContentOut(titleChars, description) {
         gsap.to(titleChars, {
             x: "100%",
+            opacity: 0.1,
             duration: 0.5,
             ease: "power4.out",
         });
@@ -102,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 animateContentOut(titleChars, description);
             }
         },
-    }); //can show 1
+    });
 
     cards.forEach((card, index) => {
         const isLastCard = index === cards.length - 1;
@@ -115,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
             pin: true,
             pinSpacing: isLastCard,
         });
-    }); //can show 2
+    });
 
     cards.forEach((card, index) => {
         if (index < cards.length - 1) {
@@ -160,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (index === 0) return;
 
         const cardDescription = card.querySelector(".card-description");
-        const cardTitleChars = card.querySelectorAll(".char span");
+        const cardTitleChars = card.querySelectorAll(".char");
 
         ScrollTrigger.create({
             trigger: card,
