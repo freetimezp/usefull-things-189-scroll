@@ -1,10 +1,5 @@
 import { setupMarqueeAnimation } from "./marquee";
 
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
-import Lenis from "lenis";
-
 document.addEventListener("DOMContentLoaded", () => {
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -133,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 onUpdate: (self) => {
                     const progress = self.progress;
 
-                    gsap.set(cardImgWrapper, {
+                    gsap.set(cardWrapper, {
                         scale: 1 - progress * 0.25,
                         opacity: 1 - progress,
                     });
